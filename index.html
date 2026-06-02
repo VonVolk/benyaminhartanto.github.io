@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benyamin Hartanto — Portfolio</title>
+
+<meta property="og:title" content="Benyamin Hartanto — Portfolio" />
+<meta property="og:description" content="Staff Promotion, Game Developer & Digital Business Graduate. Lihat karya, sertifikat, dan pengalaman saya." />
+<meta property="og:url" content="https://benyaminhartanto.com" />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════
+   DESIGN TOKENS — White / Black / Dark Blue
+═══════════════════════════════════ */
+:root {
+  --white:      #ffffff;
+  --off-white:  #f7f7f5;
+  --light-gray: #eeede9;
+  --border:     #dddbd4;
+  --muted:      #888880;
+  --text:       #1a1a18;
+  --dark-blue:  #0d1f3c;
+  --navy:       #162d52;
+  --navy-light: #1e3a6e;
+  --gold:       #c9a96e;  /* subtle warmth accent */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans:  'Outfit', sans-serif;
+  --radius:     4px;
+  --max-w:      1140px;
+}
+
+/* ═══ RESET ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--dark-blue); }
+
+/* ═══════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--dark-blue);
+}
+.nav-logo em { font-style: italic; font-weight: 300; }
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--dark-blue); }
+.nav-cta {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px 24px;
+  background: var(--dark-blue);
+  color: var(--white);
+  border-radius: var(--radius);
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  align-items: center;
+  gap: 80px;
+  padding: 130px 48px 80px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Thin vertical line decorative */
+.hero::before {
+  content: '';
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--dark-blue) 30%, var(--navy-light) 70%, transparent);
+  opacity: 0.08;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--gold);
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: clamp(56px, 6.5vw, 96px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  color: var(--dark-blue);
+  margin-bottom: 32px;
+}
+.hero-name em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--navy-light);
+}
+
+.hero-bio {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 460px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 60px; }
+.btn-primary {
+  background: var(--dark-blue);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--dark-blue);
+  transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--navy-light); border-color: var(--navy-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,31,60,0.2); }
+.btn-outline {
+  background: transparent;
+  color: var(--dark-blue);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  font-weight: 500;
+  transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: var(--dark-blue); }
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.stat-num {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--dark-blue);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Hero photo */
+.hero-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+.hero-photo-wrap {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  position: relative;
+}
+.hero-photo-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  font-weight: 300;
+}
+.hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+/* Decorative offset border */
+.hero-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.hero-badge {
+  background: var(--dark-blue);
+  color: var(--white);
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+.hero-badge strong { font-weight: 600; display: block; font-size: 13px; }
+.hero-badge span { color: rgba(255,255,255,0.6); font-size: 11px; }
+
+/* ═══════════════════════════════════
+   MARQUEE SKILLS BAR
+═══════════════════════════════════ */
+.marquee-wrap {
+  background: var(--dark-blue);
+  overflow: hidden;
+  padding: 18px 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-item {
+  padding: 0 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.marquee-item::after {
+  content: '·';
+  color: var(--gold);
+  font-size: 18px;
+}
+
+/* ═══════════════════════════════════
+   SECTION COMMON
+═══════════════════════════════════ */
+.section {
+  padding: 100px 48px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.section-alt {
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.section-alt .section { }
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--dark-blue);
+  margin-bottom: 14px;
+}
+.section-title em { font-style: italic; }
+.section-sub {
+  color: var(--muted);
+  max-width: 500px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════
+   EXPERIENCE TIMELINE
+═══════════════════════════════════ */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  margin-top: 60px;
+}
+.timeline-item {
+  display: contents;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.timeline-item.visible > * { opacity: 1; transform: none; }
+
+.timeline-left {
+  padding: 0 32px 60px 0;
+  border-right: 1px solid var(--border);
+  position: relative;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease 0.1s;
+}
+.timeline-left.visible { opacity: 1; transform: none; }
+.timeline-left::after {
+  content: '';
+  position: absolute;
+  right: -5px; top: 6px;
+  width: 9px; height: 9px;
+  background: var(--white);
+  border: 2px solid var(--dark-blue);
+  border-radius: 50%;
+}
+.timeline-year {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--dark-blue);
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+.timeline-company {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+  font-style: italic;
+}
+.timeline-right {
+  padding: 0 0 60px 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease 0.2s;
+}
+.timeline-right.visible { opacity: 1; transform: none; }
+.timeline-role {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--dark-blue);
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+.timeline-desc {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--muted);
+}
+
+/* ═══════════════════════════════════
+   PORTFOLIO GRID
+═══════════════════════════════════ */
+.portfolio-filter {
+  display: flex;
+  gap: 0;
+  margin-top: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+.filter-btn:hover { color: var(--dark-blue); }
+.filter-btn.active { color: var(--dark-blue); border-bottom-color: var(--dark-blue); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 32px;
+  border: 1px solid var(--border);
+}
+.portfolio-card {
+  background: var(--white);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+.portfolio-card:hover { background: var(--off-white); }
+.portfolio-card.span-2 { grid-column: span 2; }
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.card-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--dark-blue);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.card-body { padding: 20px 24px 24px; }
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--dark-blue);
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+.card-desc {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.card-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dark-blue);
+  display: flex; align-items: center; gap: 6px;
+  transition: gap 0.2s;
+}
+.card-link:hover { gap: 10px; }
+.card-year { font-size: 11px; color: var(--muted); }
+
+/* ═══════════════════════════════════
+   CERTIFICATES
+═══════════════════════════════════ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 48px;
+}
+.cert-card {
+  background: var(--white);
+  padding: 28px 28px 28px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.cert-card:hover { background: var(--off-white); }
+.cert-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--dark-blue);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cert-card:hover::before { opacity: 1; }
+.cert-num {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--border);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 42px;
+  text-align: center;
+  margin-top: 2px;
+}
+.cert-card:hover .cert-num { color: var(--dark-blue); opacity: 0.15; }
+.cert-name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--dark-blue);
+  letter-spacing: -0.2px;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.cert-issuer { font-size: 12px; color: var(--muted); font-weight: 300; margin-bottom: 10px; }
+.cert-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.cert-year {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 3px 0;
+}
+.cert-link-btn {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.cert-link-btn:hover { border-color: var(--dark-blue); color: var(--dark-blue); }
+
+/* ═══════════════════════════════════
+   CV SECTION
+═══════════════════════════════════ */
+.cv-block {
+  background: var(--dark-blue);
+  color: var(--white);
+  border-radius: 2px;
+  padding: 72px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+}
+/* Subtle pattern */
+.cv-block::before {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 300px; height: 300px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.cv-block::after {
+  content: '';
+  position: absolute;
+  right: -20px; top: -20px;
+  width: 180px; height: 180px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.cv-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.cv-label::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.cv-title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 4vw, 64px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.cv-title em { font-style: italic; color: rgba(255,255,255,0.7); }
+.cv-desc {
+  color: rgba(255,255,255,0.55);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.85;
+  margin-bottom: 36px;
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--dark-blue);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: var(--radius);
+  transition: all 0.25s;
+}
+.cv-btn:hover { background: var(--off-white); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+
+.cv-skills { position: relative; z-index: 1; }
+.cv-skill-row { margin-bottom: 20px; }
+.cv-skill-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.cv-skill-pct { color: var(--gold); }
+.cv-bar {
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.cv-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), rgba(255,255,255,0.6));
+  border-radius: 1px;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
+}
+.cv-fill.animated { transform: scaleX(1); }
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 56px;
+}
+.contact-links { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 24px;
+  background: var(--white);
+  transition: background 0.2s, padding-left 0.2s;
+  font-size: 14px;
+  position: relative;
+}
+.contact-link:hover { background: var(--off-white); padding-left: 32px; }
+.contact-link::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--dark-blue);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.contact-link:hover::before { opacity: 1; }
+.contact-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+.contact-link:hover .contact-icon { border-color: var(--dark-blue); background: var(--dark-blue); }
+.contact-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.contact-value { font-weight: 400; color: var(--dark-blue); font-size: 14px; }
+.contact-arrow { margin-left: auto; color: var(--border); font-size: 18px; transition: color 0.2s; }
+.contact-link:hover .contact-arrow { color: var(--dark-blue); }
+
+.contact-cta {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.contact-cta-emoji { font-size: 40px; margin-bottom: 16px; }
+.contact-cta h3 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--dark-blue);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+.contact-cta p { color: var(--muted); font-size: 14px; font-weight: 300; line-height: 1.8; margin-bottom: 28px; }
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer {
+  background: var(--dark-blue);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+}
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.footer-logo em { font-style: italic; }
+
+/* ═══════════════════════════════════
+   MODALS
+═══════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,31,60,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--white);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 48px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 36px; height: 36px;
+  border-radius: 2px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.modal-close:hover { border-color: var(--dark-blue); color: var(--dark-blue); }
+
+/* ═══════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+  .hero-visual { align-items: center; }
+  .hero-photo-wrap { max-width: 300px; }
+  .section { padding: 72px 24px; }
+  .timeline-grid { grid-template-columns: 1fr; }
+  .timeline-left { border-right: none; border-bottom: 1px solid var(--border); text-align: left; padding: 0 0 16px; }
+  .timeline-left::after { right: auto; left: -1px; top: auto; bottom: -5px; }
+  .timeline-right { padding: 20px 0 48px; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-card.span-2 { grid-column: span 1; }
+  .cv-block { grid-template-columns: 1fr; padding: 40px 28px; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .hero-stats { gap: 28px; }
+  .cert-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-logo">Benyamin <em>Hartanto</em></div>
+  <div class="nav-links">
+    <a href="#tentang">Tentang</a>
+    <a href="#pengalaman">Pengalaman</a>
+    <a href="#karya">Karya</a>
+    <a href="#sertifikat">Sertifikat</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+  <a href="Benyamin_Hartanto-resume.pdf" download class="nav-cta">↓ Unduh CV</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="tentang">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Tersedia untuk Kolaborasi</div>
+    <h1 class="hero-name">
+      Benyamin<br>
+      <em>Hartanto.</em>
+    </h1>
+    <p class="hero-bio">
+      Digital Business graduate dengan pengalaman di Game Development, Promotion, ERP, dan E-commerce. Membangun solusi digital yang bermakna dari strategi hingga eksekusi.
+    </p>
+    <div class="hero-actions">
+      <a href="#karya" class="btn-primary">Lihat Karya →</a>
+      <a href="#kontak" class="btn-outline">Hubungi Saya</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Tahun Pengalaman</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Proyek Selesai</div>
+      </div>
+      <div>
+        <div class="stat-num">3.89</div>
+        <div class="stat-label">IPK Cum Laude</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <!-- Ganti dengan: <img src="foto-kamu.jpg" alt="Benyamin Hartanto"> -->
+        <div style="text-align:center;color:var(--muted);font-size:13px;font-weight:300;padding:20px">
+          <div style="font-size:48px;margin-bottom:12px">🧑‍💼</div>
+          Ganti dengan<br>foto kamu
+        </div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span style="font-size:20px">✦</span>
+      <div>
+        <strong>S.Bns — Bisnis Digital</strong>
+        <span>Universitas Pendidikan Indonesia · 2023</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Game Design</span>
+    <span class="marquee-item">Unity</span>
+    <span class="marquee-item">ERP Development</span>
+    <span class="marquee-item">Python</span>
+    <span class="marquee-item">SQL</span>
+    <span class="marquee-item">Ren'Py</span>
+    <span class="marquee-item">UI/UX</span>
+    <span class="marquee-item">Shopee Admin</span>
+    <span class="marquee-item">TikTok Shop</span>
+    <span class="marquee-item">Web Development</span>
+    <span class="marquee-item">Augmented Reality</span>
+    <span class="marquee-item">Data Science</span>
+    <span class="marquee-item">Digital Marketing</span>
+    <span class="marquee-item">Visual Novel</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Game Design</span>
+    <span class="marquee-item">Unity</span>
+    <span class="marquee-item">ERP Development</span>
+    <span class="marquee-item">Python</span>
+    <span class="marquee-item">SQL</span>
+    <span class="marquee-item">Ren'Py</span>
+    <span class="marquee-item">UI/UX</span>
+    <span class="marquee-item">Shopee Admin</span>
+    <span class="marquee-item">TikTok Shop</span>
+    <span class="marquee-item">Web Development</span>
+    <span class="marquee-item">Augmented Reality</span>
+    <span class="marquee-item">Data Science</span>
+    <span class="marquee-item">Digital Marketing</span>
+    <span class="marquee-item">Visual Novel</span>
+  </div>
+</div>
+
+<!-- ═══ PENGALAMAN ═══ -->
+<section class="section" id="pengalaman">
+  <div class="reveal">
+    <div class="section-eyebrow">Perjalanan Karier</div>
+    <h2 class="section-title">Pengalaman<br><em>Kerja.</em></h2>
+    <p class="section-sub">Kumpulan peran dan proyek yang membentuk keahlian saya hingga hari ini.</p>
+  </div>
+
+  <div class="timeline-grid">
+
+    <!-- 1 — PT Kaizen (Terbaru) -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Jun 2025 – Jun 2027</span>
+      <span class="timeline-company">PT Kaizen Aesthetic Medicore</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">Staff Promotion</div>
+      <div class="timeline-desc">
+        Membangun dan mengembangkan sistem ERP beserta manual book untuk PT Kaizen Aesthetic Medicore dan PT MBCL Perazim Industries. Bertanggung jawab sebagai admin platform e-commerce LLUVSKIN Official di Shopee dan TikTok, mengelola listing produk, promosi, dan interaksi dengan konsumen secara digital.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">ERP</span>
+        <span class="tag">Manual Book</span>
+        <span class="tag">Shopee Admin</span>
+        <span class="tag">TikTok Shop</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Digital Marketing</span>
+      </div>
+    </div>
+
+    <!-- 2 — Guru Informatika (kontrak_guru) -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Jul 2023 – Jun 2024</span>
+      <span class="timeline-company">SMA BPK Penabur Tasikmalaya</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">Guru Honorer Informatika</div>
+      <div class="timeline-desc">
+        Mengajar mata pelajaran Informatika sebagai guru paruh waktu (honorer) di SMA BPK Penabur Tasikmalaya. Menyampaikan materi pemrograman dan teknologi digital kepada siswa SMA.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Pengajaran</span>
+        <span class="tag">Informatika</span>
+        <span class="tag">Kurikulum</span>
+      </div>
+    </div>
+
+    <!-- 3 — GIT Solution -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Agu – Des 2022</span>
+      <span class="timeline-company">PT. GIT Solution · Sleman</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">Game Designer Internship</div>
+      <div class="timeline-desc">
+        Merancang Game Design Document (GDD), wireframe, mockup, dan sistem skor untuk game rhythm VR berbasis Oculus Quest 2. Menjalankan alpha & beta testing bersama tim 15 orang.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">VR / Oculus Quest 2</span>
+        <span class="tag">GDD</span>
+        <span class="tag">Game Testing</span>
+        <span class="tag">Wireframe</span>
+      </div>
+    </div>
+
+    <!-- 4 — Sicloo CTO -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Jul 2022 – Mar 2023</span>
+      <span class="timeline-company">Sicloo · Tasikmalaya</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">Chief Technology Officer</div>
+      <div class="timeline-desc">
+        Memimpin pengembangan website CMS clothing exchange yang didanai Kemendikbud. Menganalisis performa web (SEO, accessibility), mengawasi keuangan, dan merencanakan event lokal untuk brand awareness. Bekerja dalam tim 4 orang.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Web Dev</span>
+        <span class="tag">SEO</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Team Lead</span>
+      </div>
+    </div>
+
+    <!-- 5 — NEOGEE -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Feb – Jul 2022</span>
+      <span class="timeline-company">NEOGEE · Tasikmalaya</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">Educational Game Developer</div>
+      <div class="timeline-desc">
+        Mengembangkan visual novel edukatif "TWIN-The Wild Neo" menggunakan Ren'Py sebagai capstone project MSIB bersama Indonesia Cyber Education Institute. Meraih sertifikasi advanced game programmer.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Ren'Py</span>
+        <span class="tag">Visual Novel</span>
+        <span class="tag">MSIB</span>
+      </div>
+    </div>
+
+    <!-- 6 — DBUGS AR -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Apr – Jul 2022</span>
+      <span class="timeline-company">DBUGS · Tasikmalaya</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">AR Game Developer</div>
+      <div class="timeline-desc">
+        Mengembangkan game AR "ARBIM-GEO" didanai Kemendikbud sebagai media pembelajaran SD. Menggunakan Unity + Vuforia + Lean Touch. Memperoleh Sertifikat HKI dari Kemenkumham.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">Vuforia</span>
+        <span class="tag">AR</span>
+        <span class="tag">HKI Terdaftar</span>
+      </div>
+    </div>
+
+    <!-- 7 — DBUGS 2D -->
+    <div class="timeline-left reveal">
+      <span class="timeline-year">Okt – Des 2021</span>
+      <span class="timeline-company">DBUGS · Tasikmalaya</span>
+    </div>
+    <div class="timeline-right reveal">
+      <div class="timeline-role">2D Game Developer</div>
+      <div class="timeline-desc">
+        Merancang storyboard dan mengembangkan game 2D "Ular Tangga" dengan Unity, didanai Poltekkes Kemenkes Tasikmalaya sebagai klien.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">2D Game</span>
+        <span class="tag">Storyboard</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ KARYA ═══ -->
+<div class="section-alt">
+<section class="section" id="karya">
+  <div class="reveal">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Karya &<br><em>Proyek.</em></h2>
+    <p class="section-sub">Klik karya untuk melihat detail lebih lanjut.</p>
+  </div>
+
+  <div class="portfolio-filter reveal">
+    <button class="filter-btn active" data-filter="all">Semua</button>
+    <button class="filter-btn" data-filter="game">Game</button>
+    <button class="filter-btn" data-filter="ar">AR / VR</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="erp">ERP</button>
+  </div>
+
+  <div class="portfolio-grid">
+    <!-- 1 TWIN Visual Novel -->
+    <div class="portfolio-card span-2 reveal" data-category="game" onclick="openModal('modal-1')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1f3c,#1e3a6e)">
+        <div style="font-size:56px">🎭</div>
+        <span class="card-badge">Visual Novel</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">TWIN — The Wild Neo</div>
+        <div class="card-desc">Educational visual novel game dikembangkan dengan Ren'Py sebagai capstone project MSIB bersama Indonesia Cyber Education Institute. Dipublikasikan di itch.io.</div>
+        <div class="card-footer">
+          <a href="https://neogee.itch.io/twin-the-wild-neo" target="_blank" class="card-link">Lihat di itch.io →</a>
+          <span class="card-year">2022</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 ARBIM-GEO AR -->
+    <div class="portfolio-card reveal" data-category="ar" onclick="openModal('modal-2')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#162d52,#0d3060)">
+        <div style="font-size:48px">📱</div>
+        <span class="card-badge">AR Game</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">ARBIM-GEO</div>
+        <div class="card-desc">Game Augmented Reality untuk media pembelajaran SD, didanai Kemendikbud. HKI terdaftar.</div>
+        <div class="card-footer">
+          <a href="https://bit.ly/ProjectGameAR" target="_blank" class="card-link">Lihat Proyek →</a>
+          <span class="card-year">2022</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Ular Tangga 2D -->
+    <div class="portfolio-card reveal" data-category="game" onclick="openModal('modal-3')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#1a2e50,#253d6a)">
+        <div style="font-size:48px">🎮</div>
+        <span class="card-badge">2D Game</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Ular Tangga</div>
+        <div class="card-desc">Game 2D edukasi berbasis Unity, dikembangkan untuk Poltekkes Kemenkes Tasikmalaya.</div>
+        <div class="card-footer">
+          <a href="https://bit.ly/ProjectGame2D" target="_blank" class="card-link">Lihat Proyek →</a>
+          <span class="card-year">2021</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Sicloo Web -->
+    <div class="portfolio-card span-2 reveal" data-category="web" onclick="openModal('modal-4')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0f2040,#1a3060)">
+        <div style="font-size:56px">🛍️</div>
+        <span class="card-badge">Web App</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Sicloo — Clothing Exchange Platform</div>
+        <div class="card-desc">CMS web berbasis pertukaran baju dengan fitur e-commerce dan currency converter. Mendapat pendanaan dan pengakuan Kemendikbud. Dibangun sebagai CTO.</div>
+        <div class="card-footer">
+          <span class="card-link">Platform Web · 2022–2023</span>
+          <span class="card-year">2022</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 ERP Kaizen -->
+    <div class="portfolio-card reveal" data-category="erp">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1f3c,#15305a)">
+        <div style="font-size:48px">⚙️</div>
+        <span class="card-badge">ERP</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">ERP & Manual Book</div>
+        <div class="card-desc">Sistem ERP dan manual book untuk PT Kaizen Aesthetic Medicore & PT MBCL Perazim Industries.</div>
+        <div class="card-footer">
+          <span class="card-link">In Progress</span>
+          <span class="card-year">2025–2027</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ═══ SERTIFIKAT ═══ -->
+<section class="section" id="sertifikat">
+  <div class="reveal">
+    <div class="section-eyebrow">Pendidikan & Kompetensi</div>
+    <h2 class="section-title">Sertifikat &<br><em>Pencapaian.</em></h2>
+    <p class="section-sub">Klik sertifikat untuk membuka dokumen aslinya.</p>
+  </div>
+
+  <div class="cert-grid reveal">
+    <a href="toefl.pdf" target="_blank" class="cert-card">
+      <div class="cert-num">01</div>
+      <div>
+        <div class="cert-name">TOEFL ITP Certificate of Achievement</div>
+        <div class="cert-issuer">ETS · ELTI Gramedia Yogyakarta</div>
+        <div class="cert-meta">
+          <span class="cert-year">2024 · Score 527</span>
+          <span class="cert-link-btn">↗ Buka PDF</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://bit.ly/SertifikatAdvanceGamePrograming" target="_blank" class="cert-card">
+      <div class="cert-num">02</div>
+      <div>
+        <div class="cert-name">Advanced Game Developer</div>
+        <div class="cert-issuer">Indonesia Cyber Education Institute</div>
+        <div class="cert-meta">
+          <span class="cert-year">2022</span>
+          <span class="cert-link-btn">↗ Lihat</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://bit.ly/SertifikatGamificationForTeaching" target="_blank" class="cert-card">
+      <div class="cert-num">03</div>
+      <div>
+        <div class="cert-name">Gamification for Teaching</div>
+        <div class="cert-issuer">Indonesia Cyber Education Institute</div>
+        <div class="cert-meta">
+          <span class="cert-year">2022</span>
+          <span class="cert-link-btn">↗ Lihat</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://bit.ly/SertifikatBeginerGameProgramer" target="_blank" class="cert-card">
+      <div class="cert-num">04</div>
+      <div>
+        <div class="cert-name">Beginner Game Programmer</div>
+        <div class="cert-issuer">Indonesia Cyber Education Institute</div>
+        <div class="cert-meta">
+          <span class="cert-year">2022</span>
+          <span class="cert-link-btn">↗ Lihat</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://bit.ly/CourseSQLfromProgate" target="_blank" class="cert-card">
+      <div class="cert-num">05</div>
+      <div>
+        <div class="cert-name">SQL Course</div>
+        <div class="cert-issuer">Progate</div>
+        <div class="cert-meta">
+          <span class="cert-year">2022</span>
+          <span class="cert-link-btn">↗ Lihat</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://bit.ly/CourseIBM_DataScience" target="_blank" class="cert-card">
+      <div class="cert-num">06</div>
+      <div>
+        <div class="cert-name">Data Science Certificate</div>
+        <div class="cert-issuer">IBM</div>
+        <div class="cert-meta">
+          <span class="cert-year">2022</span>
+          <span class="cert-link-btn">↗ Lihat</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://bit.ly/HKIGameARBIMGEO" target="_blank" class="cert-card">
+      <div class="cert-num">07</div>
+      <div>
+        <div class="cert-name">HKI — ARBIM-GEO AR Game</div>
+        <div class="cert-issuer">Kementerian Hukum dan HAM RI</div>
+        <div class="cert-meta">
+          <span class="cert-year">2022</span>
+          <span class="cert-link-btn">↗ Lihat</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="cert-card" style="background:var(--dark-blue)">
+      <div class="cert-num" style="color:rgba(255,255,255,0.15)">🏆</div>
+      <div>
+        <div class="cert-name" style="color:var(--white)">Lulusan Terbaik & Startup Terbaik</div>
+        <div class="cert-issuer" style="color:rgba(255,255,255,0.5)">Universitas Pendidikan Indonesia · 2023</div>
+        <div class="cert-meta">
+          <span class="cert-year">IPK 3.89 Cum Laude</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CV ═══ -->
+<section class="section" id="cv" style="padding-top:0">
+  <div class="cv-block reveal">
+    <div>
+      <div class="cv-label">Curriculum Vitae</div>
+      <h2 class="cv-title">Unduh<br><em>CV Saya.</em></h2>
+      <p class="cv-desc">
+        Dokumen CV lengkap berisi riwayat pendidikan, pengalaman kerja, keahlian, dan proyek. Format PDF siap kirim ke perekrut atau klien.
+      </p>
+      <a href="Benyamin_Hartanto-resume.pdf" download class="cv-btn">
+        ⬇ &nbsp;Unduh CV (PDF)
+      </a>
+    </div>
+    <div class="cv-skills">
+      <div class="cv-skill-row">
+        <div class="cv-skill-label"><span>Game Development</span><span class="cv-skill-pct">88%</span></div>
+        <div class="cv-bar"><div class="cv-fill" style="width:88%"></div></div>
+      </div>
+      <div class="cv-skill-row">
+        <div class="cv-skill-label"><span>ERP & System Design</span><span class="cv-skill-pct">80%</span></div>
+        <div class="cv-bar"><div class="cv-fill" style="width:80%"></div></div>
+      </div>
+      <div class="cv-skill-row">
+        <div class="cv-skill-label"><span>Web Development</span><span class="cv-skill-pct">72%</span></div>
+        <div class="cv-bar"><div class="cv-fill" style="width:72%"></div></div>
+      </div>
+      <div class="cv-skill-row">
+        <div class="cv-skill-label"><span>Data Science / SQL</span><span class="cv-skill-pct">68%</span></div>
+        <div class="cv-bar"><div class="cv-fill" style="width:68%"></div></div>
+      </div>
+      <div class="cv-skill-row">
+        <div class="cv-skill-label"><span>E-commerce / Digital Marketing</span><span class="cv-skill-pct">76%</span></div>
+        <div class="cv-bar"><div class="cv-fill" style="width:76%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KONTAK ═══ -->
+<div class="section-alt">
+<section class="section" id="kontak">
+  <div class="reveal">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Mari<br><em>Berkolaborasi.</em></h2>
+    <p class="section-sub">Punya proyek menarik atau pertanyaan? Saya terbuka untuk diskusi kapan saja.</p>
+  </div>
+
+  <div class="contact-grid reveal">
+    <div class="contact-links">
+      <a href="mailto:benyaminhartanto3@gmail.com" class="contact-link">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">benyaminhartanto3@gmail.com</div>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="https://wa.me/6289517866332" target="_blank" class="contact-link">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+62 895-1786-6332</div>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="https://www.linkedin.com/in/benyamin-hartanto-1ab600245/" target="_blank" class="contact-link">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">benyamin-hartanto-1ab600245</div>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="https://linktr.ee/benyamin_hartanto" target="_blank" class="contact-link">
+        <div class="contact-icon">🔗</div>
+        <div>
+          <div class="contact-label">Linktree</div>
+          <div class="contact-value">linktr.ee/benyamin_hartanto</div>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="contact-cta">
+      <div class="contact-cta-emoji">✦</div>
+      <h3>Ada proyek?</h3>
+      <p>Respon dalam 24 jam. Diskusi terbuka, tanpa komitmen awal.</p>
+      <a href="mailto:benyaminhartanto3@gmail.com" class="btn-primary" style="display:inline-flex;justify-content:center">
+        Kirim Email →
+      </a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">Benyamin <em>Hartanto</em></div>
+  <div>Dibuat dengan ketelitian — © <span id="year"></span></div>
+  <a href="#tentang" style="color:rgba(255,255,255,0.4);font-size:12px;letter-spacing:1px;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">↑ Atas</a>
+</footer>
+
+<!-- ═══ MODALS ═══ -->
+<!-- Modal 1 — TWIN -->
+<div class="modal-overlay" id="modal-1" onclick="closeModal(event,'modal-1')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-1').classList.remove('open')">✕</button>
+    <div style="font-size:36px;margin-bottom:16px">🎭</div>
+    <h2 style="font-family:var(--font-serif);font-size:32px;font-weight:300;letter-spacing:-0.5px;color:var(--dark-blue);margin-bottom:6px">TWIN — The Wild Neo</h2>
+    <p style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Visual Novel · Ren'Py · 2022</p>
+    <p style="color:var(--muted);line-height:1.85;margin-bottom:20px;font-weight:300">
+      Game edukasi berbentuk visual novel yang dikembangkan bersama tim NEOGEE sebagai capstone project MSIB (Merdeka Belajar Kampus Merdeka) dengan Indonesia Cyber Education Institute. Menggunakan Ren'Py sebagai engine utama, game ini menggabungkan narasi interaktif dengan konten edukatif.
+    </p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+      <span class="tag">Ren'Py</span><span class="tag">Visual Novel</span><span class="tag">Edukasi</span><span class="tag">MSIB</span>
+    </div>
+    <a href="https://neogee.itch.io/twin-the-wild-neo" target="_blank" class="btn-primary" style="font-size:13px">↗ Lihat di itch.io</a>
+  </div>
+</div>
+<!-- Modal 2 — ARBIM-GEO -->
+<div class="modal-overlay" id="modal-2" onclick="closeModal(event,'modal-2')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-2').classList.remove('open')">✕</button>
+    <div style="font-size:36px;margin-bottom:16px">📱</div>
+    <h2 style="font-family:var(--font-serif);font-size:32px;font-weight:300;letter-spacing:-0.5px;color:var(--dark-blue);margin-bottom:6px">ARBIM-GEO</h2>
+    <p style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">AR Game · Unity · Vuforia · 2022</p>
+    <p style="color:var(--muted);line-height:1.85;margin-bottom:20px;font-weight:300">
+      Game Augmented Reality yang dikembangkan sebagai media pembelajaran untuk siswa Sekolah Dasar, didanai oleh Kemendikbud. Menggunakan Unity sebagai engine dengan plugin Vuforia untuk image tracking dan Lean Touch untuk kontrol sentuh. Game ini telah mendapatkan Sertifikat Hak Kekayaan Intelektual (HKI) dari Kemenkumham.
+    </p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+      <span class="tag">Unity</span><span class="tag">Vuforia</span><span class="tag">AR</span><span class="tag">HKI</span><span class="tag">Kemendikbud</span>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://bit.ly/ProjectGameAR" target="_blank" class="btn-primary" style="font-size:13px">↗ Lihat Proyek</a>
+      <a href="https://bit.ly/HKIGameARBIMGEO" target="_blank" class="btn-outline" style="font-size:13px">↗ Sertifikat HKI</a>
+    </div>
+  </div>
+</div>
+<!-- Modal 3 — Ular Tangga -->
+<div class="modal-overlay" id="modal-3" onclick="closeModal(event,'modal-3')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-3').classList.remove('open')">✕</button>
+    <div style="font-size:36px;margin-bottom:16px">🎮</div>
+    <h2 style="font-family:var(--font-serif);font-size:32px;font-weight:300;letter-spacing:-0.5px;color:var(--dark-blue);margin-bottom:6px">Ular Tangga</h2>
+    <p style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">2D Game · Unity · 2021</p>
+    <p style="color:var(--muted);line-height:1.85;margin-bottom:20px;font-weight:300">
+      Game 2D edukatif berbasis board game klasik Ular Tangga, dikembangkan untuk Poltekkes Kemenkes Tasikmalaya sebagai klien. Proses meliputi desain storyboard, wireframe, hingga implementasi penuh di Unity.
+    </p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+      <span class="tag">Unity</span><span class="tag">2D</span><span class="tag">Edukasi</span>
+    </div>
+    <a href="https://bit.ly/ProjectGame2D" target="_blank" class="btn-primary" style="font-size:13px">↗ Lihat Proyek</a>
+  </div>
+</div>
+<!-- Modal 4 — Sicloo -->
+<div class="modal-overlay" id="modal-4" onclick="closeModal(event,'modal-4')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal-4').classList.remove('open')">✕</button>
+    <div style="font-size:36px;margin-bottom:16px">🛍️</div>
+    <h2 style="font-family:var(--font-serif);font-size:32px;font-weight:300;letter-spacing:-0.5px;color:var(--dark-blue);margin-bottom:6px">Sicloo</h2>
+    <p style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Web Platform · CMS · 2022–2023</p>
+    <p style="color:var(--muted);line-height:1.85;margin-bottom:20px;font-weight:300">
+      Platform pertukaran pakaian berbasis CMS dengan fitur e-commerce dan currency converter. Mendapatkan pendanaan dan pengakuan dari Kemendikbud. Dibangun bersama 4 anggota tim dengan peran sebagai CTO — mencakup pengembangan website, analisis SEO, aksesibilitas, pengawasan keuangan, dan event marketing lokal.
+    </p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <span class="tag">Web Dev</span><span class="tag">CMS</span><span class="tag">E-commerce</span><span class="tag">SEO</span><span class="tag">Kemendikbud</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+// Scroll Reveal
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal, .timeline-left, .timeline-right').forEach(el => revealObs.observe(el));
+
+// CV skill bars animate when visible
+const cvObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.cv-fill').forEach((bar, i) => {
+        setTimeout(() => bar.classList.add('animated'), i * 150);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.cv-skills').forEach(el => cvObs.observe(el));
+
+// Portfolio Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.style.opacity = show ? '1' : '0.25';
+      card.style.pointerEvents = show ? 'all' : 'none';
+      card.style.transition = 'opacity 0.3s ease';
+    });
+  });
+});
+
+// Modals
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e, id) {
+  if (e.target === document.getElementById(id)) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--dark-blue)' : '';
+    a.style.fontWeight = a.getAttribute('href') === '#' + current ? '600' : '';
+  });
+});
+</script>
+
+</body>
+</html>
