@@ -44,14 +44,129 @@ body {
   font-size: 15px;
   line-height: 1.75;
   overflow-x: hidden;
+  cursor: none;
 }
-a { color: inherit; text-decoration: none; }
+a { color: inherit; text-decoration: none; cursor: none; }
 img { max-width: 100%; display: block; }
+button { cursor: none; }
+
+/* ═══ CUSTOM CURSOR ═══ */
+.cursor-dot {
+  width: 8px; height: 8px;
+  background: var(--dark-blue);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s, opacity 0.2s;
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--dark-blue);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s cubic-bezier(0.16,1,0.3,1),
+              height 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.2s,
+              opacity 0.2s;
+  opacity: 0.4;
+}
+.cursor-label {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(12px, 12px);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dark-blue);
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+}
+
+/* cursor states */
+body.cursor-hover .cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+}
+body.cursor-hover .cursor-ring {
+  width: 56px; height: 56px;
+  border-color: var(--gold);
+  opacity: 0.6;
+}
+body.cursor-click .cursor-dot {
+  width: 12px; height: 12px;
+  background: var(--dark-blue);
+}
+body.cursor-click .cursor-ring {
+  width: 28px; height: 28px;
+  opacity: 0.8;
+}
+body.cursor-text .cursor-dot {
+  width: 3px; height: 28px;
+  border-radius: 2px;
+  background: var(--dark-blue);
+}
+body.cursor-text .cursor-ring {
+  opacity: 0;
+}
+body.cursor-view .cursor-dot {
+  opacity: 0;
+}
+body.cursor-view .cursor-ring {
+  width: 72px; height: 72px;
+  background: var(--dark-blue);
+  border-color: var(--dark-blue);
+  opacity: 0.9;
+}
+body.cursor-view .cursor-label {
+  opacity: 1;
+  color: var(--white);
+  transform: translate(8px, 8px);
+}
 
 /* ═══ SCROLLBAR ═══ */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--off-white); }
 ::-webkit-scrollbar-thumb { background: var(--dark-blue); }
+
+/* ═══ MAGNETIC HOVER ═══ */
+.magnetic { display: inline-block; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+
+/* ═══ PAGE LOAD ANIMATION ═══ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * {
+  animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+.hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+.hero-visual {
+  animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+}
+
+/* ═══ TILT CARD ═══ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+.tilt-card:hover { box-shadow: 0 20px 60px rgba(13,31,60,0.12); }
 
 /* ═══════════════════════════════════
    NAVIGATION
@@ -897,6 +1012,8 @@ footer {
   .cv-block { grid-template-columns: 1fr; padding: 40px 28px; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring, .cursor-label { display: none; }
 }
 @media (max-width: 600px) {
   .hero-stats { gap: 28px; }
@@ -905,6 +1022,11 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-label" id="cursorLabel"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav>
@@ -953,11 +1075,7 @@ footer {
   <div class="hero-visual">
     <div class="hero-photo-wrap">
       <div class="hero-photo-frame">
-        <!-- Ganti dengan: <img src="foto-kamu.jpg" alt="Benyamin Hartanto"> -->
-        <div style="text-align:center;color:var(--muted);font-size:13px;font-weight:300;padding:20px">
-          <div style="font-size:48px;margin-bottom:12px">🧑‍💼</div>
-          Ganti dengan<br>foto kamu
-        </div>
+        <img src="ben.jpg" alt="Benyamin Hartanto" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--muted);font-size:13px;font-weight:300;padding:20px\'><div style=\'font-size:48px;margin-bottom:12px\'>🧑‍💼</div>Upload ben.jpg<br>ke repo GitHub</div>'">
       </div>
     </div>
     <div class="hero-badge">
@@ -1162,7 +1280,7 @@ footer {
 
   <div class="portfolio-grid">
     <!-- 1 TWIN Visual Novel -->
-    <div class="portfolio-card span-2 reveal" data-category="game" onclick="openModal('modal-1')">
+    <div class="portfolio-card span-2 reveal tilt-card" data-category="game" onclick="openModal('modal-1')">
       <div class="card-thumb" style="background:linear-gradient(135deg,#0d1f3c,#1e3a6e)">
         <div style="font-size:56px">🎭</div>
         <span class="card-badge">Visual Novel</span>
@@ -1523,7 +1641,98 @@ footer {
 
 <!-- ═══ JAVASCRIPT ═══ -->
 <script>
-// Scroll Reveal
+// ── Custom Cursor ──────────────────────────────────────────
+const dot   = document.getElementById('cursorDot');
+const ring  = document.getElementById('cursorRing');
+const label = document.getElementById('cursorLabel');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+});
+
+// Smooth ring follow
+function animateRing() {
+  rx += (mx - rx) * 0.1;
+  ry += (my - ry) * 0.1;
+  ring.style.left  = rx + 'px';
+  ring.style.top   = ry + 'px';
+  label.style.left = rx + 'px';
+  label.style.top  = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// Click effect
+document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
+
+// Hover states per element type
+function setCursorState(state, text = '') {
+  document.body.classList.remove('cursor-hover','cursor-text','cursor-view');
+  if (state) document.body.classList.add('cursor-' + state);
+  label.textContent = text;
+}
+
+// Links & buttons → hover
+document.querySelectorAll('a, button, .filter-btn').forEach(el => {
+  el.addEventListener('mouseenter', () => setCursorState('hover'));
+  el.addEventListener('mouseleave', () => setCursorState(''));
+});
+
+// Portfolio cards → "View" label
+document.querySelectorAll('.portfolio-card').forEach(el => {
+  el.addEventListener('mouseenter', () => setCursorState('view', 'View'));
+  el.addEventListener('mouseleave', () => setCursorState(''));
+});
+
+// Cert cards → "Open" label
+document.querySelectorAll('.cert-card').forEach(el => {
+  el.addEventListener('mouseenter', () => setCursorState('view', 'Open'));
+  el.addEventListener('mouseleave', () => setCursorState(''));
+});
+
+// Text inputs / paragraphs → text cursor
+document.querySelectorAll('p, .timeline-desc, .hero-bio').forEach(el => {
+  el.addEventListener('mouseenter', () => setCursorState('text'));
+  el.addEventListener('mouseleave', () => setCursorState(''));
+});
+
+// ── Tilt Cards ──────────────────────────────────────────────
+document.querySelectorAll('.tilt-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width  / 2;
+    const cy = rect.height / 2;
+    const rotX = ((y - cy) / cy) * -6;
+    const rotY = ((x - cx) / cx) *  6;
+    card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ── Magnetic Buttons ────────────────────────────────────────
+document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta, .cv-btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width  / 2;
+    const y = e.clientY - rect.top  - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+    btn.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+    setTimeout(() => btn.style.transition = '', 500);
+  });
+});
+
+// ── Scroll Reveal ───────────────────────────────────────────
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
@@ -1533,7 +1742,7 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal, .timeline-left, .timeline-right').forEach(el => revealObs.observe(el));
 
-// CV skill bars animate when visible
+// ── CV Skill Bars ───────────────────────────────────────────
 const cvObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1545,7 +1754,7 @@ const cvObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.cv-skills').forEach(el => cvObs.observe(el));
 
-// Portfolio Filter
+// ── Portfolio Filter ────────────────────────────────────────
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1553,14 +1762,14 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     const filter = btn.dataset.filter;
     document.querySelectorAll('.portfolio-card').forEach(card => {
       const show = filter === 'all' || card.dataset.category === filter;
-      card.style.opacity = show ? '1' : '0.25';
+      card.style.opacity = show ? '1' : '0.2';
       card.style.pointerEvents = show ? 'all' : 'none';
-      card.style.transition = 'opacity 0.3s ease';
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     });
   });
 });
 
-// Modals
+// ── Modals ──────────────────────────────────────────────────
 function openModal(id) {
   document.getElementById(id).classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1580,10 +1789,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Active nav on scroll
+// ── Nav Active on Scroll ────────────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
@@ -1592,10 +1798,25 @@ window.addEventListener('scroll', () => {
     if (window.scrollY >= s.offsetTop - 100) current = s.id;
   });
   navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--dark-blue)' : '';
-    a.style.fontWeight = a.getAttribute('href') === '#' + current ? '600' : '';
+    const active = a.getAttribute('href') === '#' + current;
+    a.style.color      = active ? 'var(--dark-blue)' : '';
+    a.style.fontWeight = active ? '600' : '';
   });
 });
+
+// ── Parallax Hero Photo ─────────────────────────────────────
+const heroPhoto = document.querySelector('.hero-photo-wrap');
+if (heroPhoto) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    if (scrolled < window.innerHeight) {
+      heroPhoto.style.transform = `translateY(${scrolled * 0.08}px)`;
+    }
+  });
+}
+
+// ── Footer Year ─────────────────────────────────────────────
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
