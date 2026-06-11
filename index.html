@@ -1038,7 +1038,10 @@ footer {
     <a href="#sertifikat">Sertifikat</a>
     <a href="#kontak">Kontak</a>
   </div>
-  <a href="Benyamin%20Hartanto-resume.pdf" download class="nav-cta">↓ Unduh CV</a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="web2.html" title="Tema Laut" style="width:36px;height:36px;border:1.5px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:18px;transition:all 0.2s;color:var(--dark-blue)" onmouseover="this.style.borderColor='var(--dark-blue)'" onmouseout="this.style.borderColor='var(--border)'">🌊</a>
+    <a href="Benyamin%20Hartanto-resume.pdf" download class="nav-cta">↓ Unduh CV</a>
+  </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -1278,87 +1281,11 @@ footer {
     <button class="filter-btn" data-filter="erp">ERP</button>
   </div>
 
-  <div class="portfolio-grid">
-    <!-- 1 TWIN Visual Novel -->
-    <div class="portfolio-card span-2 reveal tilt-card" data-category="game" onclick="openModal('modal-1')">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1f3c,#1e3a6e)">
-        <div style="font-size:56px">🎭</div>
-        <span class="card-badge">Visual Novel</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">TWIN — The Wild Neo</div>
-        <div class="card-desc">Educational visual novel game dikembangkan dengan Ren'Py sebagai capstone project MSIB bersama Indonesia Cyber Education Institute. Dipublikasikan di itch.io.</div>
-        <div class="card-footer">
-          <a href="https://neogee.itch.io/twin-the-wild-neo" target="_blank" class="card-link">Lihat di itch.io →</a>
-          <span class="card-year">2022</span>
-        </div>
-      </div>
+  <!-- Portofolio akan dimuat dari list_portofolio.md -->
+  <div class="portfolio-grid" id="portfolio-grid">
+    <div class="md-loading-state reveal" style="grid-column:1/-1;text-align:center;padding:48px 0;color:var(--muted);font-size:13px;letter-spacing:1px">
+      ⏳ Memuat dari <code>list_portofolio.md</code>…
     </div>
-
-    <!-- 2 ARBIM-GEO AR -->
-    <div class="portfolio-card reveal" data-category="ar" onclick="openModal('modal-2')">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#162d52,#0d3060)">
-        <div style="font-size:48px">📱</div>
-        <span class="card-badge">AR Game</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">ARBIM-GEO</div>
-        <div class="card-desc">Game Augmented Reality untuk media pembelajaran SD, didanai Kemendikbud. HKI terdaftar.</div>
-        <div class="card-footer">
-          <a href="https://bit.ly/ProjectGameAR" target="_blank" class="card-link">Lihat Proyek →</a>
-          <span class="card-year">2022</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3 Ular Tangga 2D -->
-    <div class="portfolio-card reveal" data-category="game" onclick="openModal('modal-3')">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#1a2e50,#253d6a)">
-        <div style="font-size:48px">🎮</div>
-        <span class="card-badge">2D Game</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Ular Tangga</div>
-        <div class="card-desc">Game 2D edukasi berbasis Unity, dikembangkan untuk Poltekkes Kemenkes Tasikmalaya.</div>
-        <div class="card-footer">
-          <a href="https://bit.ly/ProjectGame2D" target="_blank" class="card-link">Lihat Proyek →</a>
-          <span class="card-year">2021</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4 Sicloo Web -->
-    <div class="portfolio-card span-2 reveal" data-category="web" onclick="openModal('modal-4')">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#0f2040,#1a3060)">
-        <div style="font-size:56px">🛍️</div>
-        <span class="card-badge">Web App</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Sicloo — Clothing Exchange Platform</div>
-        <div class="card-desc">CMS web berbasis pertukaran baju dengan fitur e-commerce dan currency converter. Mendapat pendanaan dan pengakuan Kemendikbud. Dibangun sebagai CTO.</div>
-        <div class="card-footer">
-          <span class="card-link">Platform Web · 2022–2023</span>
-          <span class="card-year">2022</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5 ERP Kaizen -->
-    <div class="portfolio-card reveal" data-category="erp">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1f3c,#15305a)">
-        <div style="font-size:48px">⚙️</div>
-        <span class="card-badge">ERP</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">ERP & Manual Book</div>
-        <div class="card-desc">Sistem ERP dan manual book untuk PT Kaizen Aesthetic Medicore & PT MBCL Perazim Industries.</div>
-        <div class="card-footer">
-          <span class="card-link">In Progress</span>
-          <span class="card-year">2025–2027</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 </div>
